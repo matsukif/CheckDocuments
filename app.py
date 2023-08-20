@@ -10,7 +10,8 @@ import tempfile
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 uploaded_file = st.sidebar.file_uploader("upload", type="pdf")
-openai_api_key = st.secrets.OpenAIAPI.openai_api_key #StreamlitのSecretsからAPI keyをとってくる
+os.environ['OPENAI_API_KEY'] = st.secrets.OpenAIAPI.openai_api_key #StreamlitのSecretsからAPI keyをとってくる
+#openai_api_key = st.secrets.OpenAIAPI.openai_api_key #StreamlitのSecretsからAPI keyをとってくる
 
 text_splitter = RecursiveCharacterTextSplitter(
   chunk_size = 2000,
