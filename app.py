@@ -47,7 +47,7 @@ if uploaded_file :
     st.session_state['history'] = []
 
   if 'generated' not in st.session_state: #['generated']にてモデルから生成された回答を保存
-    st.session_state['generated'] = ["Hello I Feel free to ask about anything regarding thsi" + uploaded_file.name]
+    st.session_state['generated'] = ["このドキュメントについてなんでも聞いてね" + uploaded_file.name]
   
   if 'past' not in st.session_state: #['past']はユーザーが入力したメッセージを保存
     st.session_state['past'] = ["Hey !"]
