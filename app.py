@@ -20,7 +20,8 @@ text_splitter = RecursiveCharacterTextSplitter(
 )
 
 if uploaded_file :
-  with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+  # with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
+  with tempfile.NamedTemporaryFile(delete=True) as tmp_file:
     tmp_file.write(uploaded_file.getvalue())
     tmp_file_path = tmp_file.name
 
