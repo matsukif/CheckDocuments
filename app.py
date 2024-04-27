@@ -32,7 +32,7 @@ if uploaded_file :
   vectors = FAISS.from_documents(data, embeddings)
 
   #過去の質問や回答内容を加味してテキスト出力するためにConversationalRetrievalChainを利用
-  chain = ConversationalRetrievalChain.from_llm(llm= ChatOpenAI(temperature=0.0,model_name='gpt-3.5-turbo-0613'),
+  chain = ConversationalRetrievalChain.from_llm(llm= ChatOpenAI(temperature=0.0,model_name='gpt-3.5-turbo-0125'),
                                                retriever=vectors.as_retriever()
                                               ) 
 
