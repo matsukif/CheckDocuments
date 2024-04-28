@@ -63,7 +63,7 @@ if uploaded_file :
     st.session_state['generated'] = ["このドキュメントについてなんでも聞いてね\n" + uploaded_file.name]
   
   if 'past' not in st.session_state: #['past']はユーザーが入力したメッセージを保存
-    st.session_state['past'] = ["Hey !"]
+    st.session_state['past'] = ["Hey !!"]
   
   response_container = st.container() #コンテナは必須ではないが、チャットメッセージの下に質問エリアを配置することでＵＸ向上
   container = st.container()
