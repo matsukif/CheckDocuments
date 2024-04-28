@@ -44,6 +44,17 @@ if uploaded_file :
     st.session_state['history'].append((query, result["answer"]))
     return result["answer"]
 
+  #会話履歴をConversationalRetrievalChainに渡すことで過去の応答や読み込んだファイルから回答を生成する。検索結果を標準出力へ(20240428）
+  def conversational_chat_with_details(query):
+    # チェーンを使用してクエリを処理し、応答とリトリバルの詳細を取得
+    result = chain({"question": query, "chat_history": st.session_state['history'], "return_retrieval_details": True})
+    
+    # 会話履歴に質問と応答を追加
+    st.session_state['history'].append((query, result["answer"]))
+    
+    # 応答とリトリバルの詳細を返す
+    return result["answer"], result.get("retrieval_details", None)
+
   #UX向上のため「セッション初期化」「メッセージ表示」を行う
   if 'history' not in st.session_state: #セッションを初期化するためにst.session_state['history']の通りに宣言
     st.session_state['history'] = []
@@ -66,8 +77,10 @@ if uploaded_file :
       submit_button = st.form_submit_button(label='Send')
 
     if submit_button and user_input :
-      output =  conversational_chat(user_input) 
-
+      # output =  conversational_chat(user_input) 
+      output, retrieval_details = conversational_chat_with_details(user_input)
+      print(retrieval_details)
+      
       st.session_state['past'].append(user_input)
       st.session_state['generated'].append(output) 
 
