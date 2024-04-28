@@ -53,7 +53,7 @@ if uploaded_file :
     st.session_state['history'].append((query, result["answer"]))
     
     # 応答とリトリバルの詳細を返す
-    return result["answer"], result.get("retrieval_details", None)
+    return result["answer"], result.get("retrieval_details", "検索結果なし")
 
   #UX向上のため「セッション初期化」「メッセージ表示」を行う
   if 'history' not in st.session_state: #セッションを初期化するためにst.session_state['history']の通りに宣言
