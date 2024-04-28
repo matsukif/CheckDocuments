@@ -8,6 +8,7 @@ from langchain.document_loaders import PyPDFLoader
 from langchain.vectorstores import FAISS
 import tempfile
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+import cryptography
 
 uploaded_file = st.sidebar.file_uploader("upload", type="pdf")
 os.environ['OPENAI_API_KEY'] = st.secrets.OpenAIAPI.openai_api_key #StreamlitのSecretsからAPI keyをとってくる
