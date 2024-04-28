@@ -5,3 +5,4 @@ openai
 faiss-cpu
 tiktoken
 pypdf
+cryptography>=3.1
