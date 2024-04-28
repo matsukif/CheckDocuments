@@ -10,6 +10,7 @@ import tempfile
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import cryptography
 
+print("始めるよ")
 uploaded_file = st.sidebar.file_uploader("upload", type="pdf")
 os.environ['OPENAI_API_KEY'] = st.secrets.OpenAIAPI.openai_api_key #StreamlitのSecretsからAPI keyをとってくる
 #openai_api_key = st.secrets.OpenAIAPI.openai_api_key #StreamlitのSecretsからAPI keyをとってくる
@@ -90,3 +91,4 @@ if uploaded_file :
       for i in range(len(st.session_state['generated'])):
         message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="big-smile")
         message(st.session_state["generated"][i], key=str(i), avatar_style="thumbs")
+  print("終わるよ")
